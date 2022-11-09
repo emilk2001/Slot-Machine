@@ -22,6 +22,10 @@ symbol_value = {
     "D": 2
 }
 
+
+#Get input to check for winnings. 
+#Only check the lines the user bets on.
+#get the first symbol for the row and then make sure the rest is the same.
 def check_winnings(columns, lines, bet, values):
     winnings = 0
     winning_lines = []
@@ -73,7 +77,7 @@ def print_slot_machine(columns):
 
         print()
             
-
+#Collecting user input 
 def deposit():
     while True:
         amount = input("What would you like to deposit?")
@@ -88,6 +92,8 @@ def deposit():
 
     return amount
 
+
+#Pick number between one and three 
 def get_number_of_lines():
     while True:
         lines = input("Enter the number of lines to bet on (1-" + str(MAX_LINES) + ")? ")
@@ -102,6 +108,8 @@ def get_number_of_lines():
 
     return lines
 
+
+#Ask how much you want to bet
 def get_bet():
     while True:
         amount = input("What would you like to bet on each line?")
@@ -116,6 +124,7 @@ def get_bet():
 
     return amount
 
+#Find out how much the user won or lost each spin
 def spin(balance):
     lines = get_number_of_lines()
     while True:
@@ -136,7 +145,7 @@ def spin(balance):
     print(f"You won on lines:", *winning_lines)
     return winnings - total_bet
 
-
+#Rerun program 
 def main():
     balance = deposit()
     while True:
@@ -146,6 +155,6 @@ def main():
             break
         balance += spin(balance)
 
-    print(f"You left with £{balance} ")
+    print(f"You left with £{balance}")
 
 main()
